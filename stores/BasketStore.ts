@@ -1,8 +1,9 @@
 import {makeObservable, action, observable, computed, toJS} from 'mobx';
 import {Product} from './ProductStore';
+import RootStore from './rootStore';
 
 export default class BasketStore {
-    constructor(){
+    constructor(rootStore: RootStore){
         makeObservable(this,{
             itemList: observable,
             totalPrice: observable,

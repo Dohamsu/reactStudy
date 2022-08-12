@@ -1,4 +1,5 @@
 import {makeObservable, action, observable, computed, toJS} from 'mobx';
+import RootStore from './rootStore';
 
 export interface Product{
     id: number;
@@ -8,7 +9,7 @@ export interface Product{
 }
 
 export default class ProductStore{
-    constructor(){
+    constructor(rootStore: RootStore){
         makeObservable(this,{
             productList: observable,
             addProduct: action,

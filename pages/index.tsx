@@ -1,12 +1,17 @@
 import styles from '../styles/Home.module.css'
-import * as React from 'react';
-import ReactDOM from 'react-dom';
-import App from './_app';
+import  React ,{useState}from 'react';
+import Main from './main';
+
+import {Provider} from 'mobx-react'
+import RootStore from '../stores/rootStore'
+
+const rootStore = new RootStore();
 
 export default function Home() {
+
   return (
-    <div className={styles.container}>
-      <App/>
-    </div>
-  )
+    <Provider {...rootStore}>
+      <Main/>
+    </Provider>      
+  );
 }
