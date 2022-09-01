@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
 import counterStore from "../stores/CounterStore";
 import {useRouter} from 'next/router'
+import Button from "@mui/material/Button";
+import Box from '@mui/material/Box';
 
 interface Props {
   counterStore?: counterStore;
@@ -16,8 +18,8 @@ render() {
     return (
         <div>
             {counterStore!.number}
-            <button onClick={()=>counterStore!.increase(2) } >+2</button>
-            <button onClick={()=>counterStore!.reset(0) } >reset</button>
+            <Button  variant="contained" onClick={()=>counterStore!.increase(2) } >+2</Button >
+            <Button  variant="contained" onClick={()=>counterStore!.reset(0) } >reset</Button >
         </div>
     );
 }
@@ -28,16 +30,16 @@ export default function SuperMarket(){
     const router = useRouter();
 
 return(
-    <div className="MarketTemplate">
+    <Box className="MarketTemplate">
         <div className="Market">
             메인페이지입니다ㅏ
         </div>
         <div className="AddProduct">
-            <button onClick={()=>router.push('/loginPage')}>LoginPage </button>
+            <button onClick={()=>router.push('/reservation')}>reservation Apge </button>
             <hr/>
 
-        </div>
             <Resetbtn/>
-    </div>
+        </div>
+    </Box>
     )
 }

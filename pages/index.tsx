@@ -10,8 +10,6 @@ const rootStore = new RootStore();
 export default function Home() {
 
   return (
-    <Provider {...rootStore}>
       <Main/>
-    </Provider>      
   );
 }
