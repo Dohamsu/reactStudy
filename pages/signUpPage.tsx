@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
 import counterStore from "../stores/CounterStore";
 import {useRouter} from 'next/router'
+import SampleDoc from '../components/sampleDoc';
 
 interface Props {
   counterStore?: counterStore;
@@ -30,7 +31,7 @@ export default function defaultApp(){
   return (
     <div>
 
-        <Counter/>
+        <SampleDoc/>
         <div>signuP Pages</div>
         <button onClick={()=>router.push('/')}>RootPage </button>
       </div>

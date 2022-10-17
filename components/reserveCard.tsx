@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { observer, inject } from "mobx-react";
-import {useRouter} from 'next/router'
 import { Button,Box,Grid } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Card from '@mui/material/Card';
@@ -13,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import Collapse from '@mui/material/Collapse';
 import Rating from '@mui/material/Rating';
 
-class ToggleDetail extends React.Component<{description:string},{isToggleOn:boolean}> {
+class ToggleDetail extends Component<{description:string},{isToggleOn:boolean}> {
     constructor(props:any) {
       super(props);
       this.state = {isToggleOn: false};
@@ -68,13 +66,16 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 export default function ReserveCard(props: any){
 
 
-  
+
   let data = props.data;
   let rating = data.rating == undefined ? 0:data.rating; 
   console.log(props);
-  
+  const { printRef } = props;
+
   return (
-    <Card sx={{ width: 220, height:450}}>
+    <Card
+    ref={printRef}
+    sx={{ width: 220, height:450}}>
         <CardMedia
             component="img"
             alt="thumb"

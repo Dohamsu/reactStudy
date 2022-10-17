@@ -11,7 +11,7 @@ export default function SimpleBottomNavigation() {
     const router = useRouter();
 
     return (
-      <Box sx={{ bottom:0      ,backgroundColor: "white",}}>
+      <Box sx={{ width:'100%',bottom:0,position:'fixed',backgroundColor: "white",}}>
         <BottomNavigation
           showLabels
           value={value}
@@ -22,9 +22,9 @@ export default function SimpleBottomNavigation() {
           ,backgroundColor: "white",
         }}
         >
-          <BottomNavigationAction onClick={()=>router.push('/main')} label="Main" icon={<Restore />} />
-          <BottomNavigationAction onClick={()=>router.push('/reservation')}label="Reservation" icon={<Favorite />} />
-          <BottomNavigationAction onClick={()=>router.push('/signUpPage')}label="SignUp" icon={<LocationOn />} />
+          <BottomNavigationAction onClick={()=>router.push('/main')} label="연차신청서" icon={<Restore />} />
+          <BottomNavigationAction onClick={()=>router.push('/cashDoc')}label="지출결의서" icon={<Favorite />} />
+          <BottomNavigationAction onClick={()=>router.push('/signUpPage')}label="연차신청서" icon={<LocationOn />} />
         </BottomNavigation>
       </Box>
     );

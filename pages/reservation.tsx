@@ -1,18 +1,11 @@
-import React, { Component } from "react";
+import React, { useRef } from "react";
 import { observer, inject } from "mobx-react";
 import {useRouter} from 'next/router'
 import { Button,Box,Grid } from "@mui/material";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Card from '@mui/material/Card';
-import { styled } from '@mui/material/styles';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import Collapse from '@mui/material/Collapse';
-
 import ReserveCard from '../components/reserveCard';
+import SampleDoc from '../components/sampleDoc';
+import ReactToPrint from "react-to-print";
 
 
 export default function defaultApp(){
@@ -780,7 +773,8 @@ export default function defaultApp(){
     }
 };
 
-  
+let componentRef = useRef(null);
+
   return (
     <Grid
     sx={{height:'90vh'}}
@@ -804,8 +798,10 @@ export default function defaultApp(){
                 <Grid item xs={10} sm={6} md={4} lg={3} key={index}
                 justifyContent="space-around"
                 container 
+                
                 >
                     <ReserveCard
+                    //  printRef={componentRef}
                     data={data}/>
                 </Grid>
             ))}

@@ -19,7 +19,7 @@ export default class MainContainer extends App < {}, State> {
     const { Component, pageProps } = this.props;
     
     return (
-      <Container  sx={{height:"100vh" ,width:"90%", margin: "auto", p:1}}>
+      <Container  sx={{height:"100vh" ,width:"100%", margin: "auto", p:1}}>
         <Provider {...this.state.Store}>
           <CssBaseline />
           <div style={{ height:"90vh"}}>
