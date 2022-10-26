@@ -4,8 +4,6 @@ import { Button,Grid } from "@mui/material";
 import Box, { BoxProps } from '@mui/material/Box';
 
 import dayjs, { Dayjs } from 'dayjs';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -171,7 +169,7 @@ export default function SampleDoc(props: any){
         <div 
         ref={printRef}
 
-        style={{ width: '100%', padding:'75px' }}>
+        style={{ width: '100%' }}>
         <Box
           sx={{
             display: 'grid',

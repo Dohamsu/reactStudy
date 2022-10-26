@@ -14,7 +14,7 @@
          //전역 파일을 엉망으로 만들면 안된다 
          // 웹 타이틀 같은 것 넣음
         <Html lang="kr">
-           <title> reacT Practice</title>
+           <title> Globiz 문서 인쇄 시스템 </title>
          <Head>
            <meta property="custom" content="123123" charSet="UTF-8"/>
          </Head>

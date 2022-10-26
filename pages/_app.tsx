@@ -22,10 +22,10 @@ export default class MainContainer extends App < {}, State> {
       <Container  sx={{height:"100vh" ,width:"100%", margin: "auto", p:1}}>
         <Provider {...this.state.Store}>
           <CssBaseline />
-          <div style={{ height:"90vh"}}>
+          <div style={{ height:"99vh"}}>
               <Component {...pageProps}/>
           </div>
-          <NavBar/>
+          {/* <NavBar/> */}
         </Provider>
       </Container>
 
