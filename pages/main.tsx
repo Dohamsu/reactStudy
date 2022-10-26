@@ -22,8 +22,10 @@ import MailIcon from '@mui/icons-material/Mail';
 import {Router, useRouter} from 'next/router'
 import Button from "@mui/material/Button";
 import Box from '@mui/material/Box';
-import SampleDoc from '../components/sampleDoc';
-import CashDoc from './cashDoc';
+import DayOffDoc from '../components/dayOffDoc';
+import CashDoc from '../components/cashDoc';
+import CashDoc2 from '../components/cashDoc2';
+import TravelOrderDoc from '../components/travelOrderDoc';
 import ReactToPrint from "react-to-print";
 import { JsxElement } from "typescript";
 import { boxSizing } from "@mui/system";
@@ -79,9 +81,9 @@ const AppBar = styled(MuiAppBar, {
     justifyContent: 'flex-end',
   }));
 
-  const navMenu = [{name:"연차신청서",route:"sampleDoc"},{name:"지출결의서1",route:"cashDoc"},{name:"지출결의서2",route:"cashDoc"}]
+  const navMenu = [{name:"연차신청서",route:"dayOffDoc"},{name:"지출결의서1",route:"cashDoc"},{name:"지출결의서2",route:"cashDoc2"},{name:"출장명령서",route:"travelOrderDoc"}]
 
-  function InnerContainer(data:any): JSX.Element{
+  function InnerContainer(data:any):any{
     let  componentRef = useRef<any>([]);
     let  printRef = useRef<any>([]);
 
@@ -97,41 +99,71 @@ const AppBar = styled(MuiAppBar, {
       }
     }
 
-    if(data.doc == 'cashDoc'){
-
-      return (
-        <div         
-        style={{ width: '100%', padding:'0px' }}>
-          <Box 
-          sx={{paddingBottom:'50px'}}>
-
-          <ReactToPrint
-            pageStyle={`@page {\ size: landscape; margin:75px!important\ }\ `}
-            trigger={() => <Button  variant="contained">인쇄</Button>}
-            content={() => printRef.current}
-            documentTitle={"경비청구서"}
-          />
-          <Button onClick={addInfoLine}>지출 라인 추가</Button>
-          <Button onClick={delInfoLine} >지출 라인 삭제</Button>
-          </Box>
-            <CashDoc printRef={printRef} compoRef={componentRef} />
-        </div>
-  
-        );
-    }else{
-      return (
-        <div         
-        style={{ width: '100%', padding:'0px' }}>
+    switch (data.doc) {
+      case 'cashDoc':
+        return (
+          <div         
+          style={{ width: '100%', padding:'0px' }}>
+            <Box 
+            sx={{paddingBottom:'50px'}}>
             <ReactToPrint
-            pageStyle={`@page { size:  A4; margin:75px!important} `}
-            trigger={() => <Button style={{margin:'50px'}}  variant="contained">인쇄</Button>}
-            content={() => printRef.current}
-            documentTitle={"연차신청서"}
+              pageStyle={`@page {\ size: landscape; margin:75px!important\ }\ `}
+              trigger={() => <Button  variant="contained">인쇄</Button>}
+              content={() => printRef.current}
+              documentTitle={"경비청구서"}
             />
-           <SampleDoc  printRef={printRef} compoRef={componentRef} />
-        </div>
-  
-        );
+            <Button onClick={addInfoLine}>지출 라인 추가</Button>
+            <Button onClick={delInfoLine} >지출 라인 삭제</Button>
+            </Box>
+              <CashDoc printRef={printRef} compoRef={componentRef} />
+          </div>
+    
+          );
+        case 'cashDoc2':
+          return(
+            <div         
+              style={{ width: '100%', padding:'0px' }}>
+                <ReactToPrint
+                pageStyle={`@page { size:  A4; margin:0px!important} `}
+                trigger={() => <Button style={{margin:'50px'}}  variant="contained">인쇄</Button>}
+                content={() => printRef.current}
+                documentTitle={"지출결의서"}
+                />
+                <CashDoc2  printRef={printRef} compoRef={componentRef} />
+            </div>
+            );
+          break;
+          case 'dayOffDoc':
+            return(
+              <div         
+               style={{ width: '100%', padding:'75px' }}>
+                  <ReactToPrint
+                  pageStyle={`@page { size:  A4; margin:75px!important} `}
+                  trigger={() => <Button style={{margin:'50px'}}  variant="contained">인쇄</Button>}
+                  content={() => printRef.current}
+                  documentTitle={"연차신청서"}
+                  />
+                  <DayOffDoc  printRef={printRef} compoRef={componentRef} />
+              </div>
+            );
+            break;
+            case 'travelOrderDoc':
+              return(
+              <div         
+              style={{ width: '100%', padding:'0px' }}>
+                 <ReactToPrint
+                 pageStyle={`@page { size:  A4; margin:0px!important} `}
+                 trigger={() => <Button style={{margin:'50px'}}  variant="contained">인쇄</Button>}
+                 content={() => printRef.current}
+                 documentTitle={"연차신청서"}
+                 />
+                 <TravelOrderDoc  printRef={printRef} compoRef={componentRef} />
+              </div>
+              );
+              break;
+                
+      default:
+        break;
     }
   }
   

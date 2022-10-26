@@ -4,7 +4,7 @@ import {useRouter} from 'next/router'
 import { Button,Box,Grid } from "@mui/material";
 import Typography from '@mui/material/Typography';
 import ReserveCard from '../components/reserveCard';
-import SampleDoc from '../components/sampleDoc';
+import SampleDoc from '../components/dayOffDoc';
 import ReactToPrint from "react-to-print";
 
 
